@@ -76,7 +76,7 @@ session_start();
 
                                 foreach ($result as $dato) {
                                 ?>
-                                    <option value="<?= $dato["id_proyecto"] ?>"><?= $dato["nombre"]; ?></option>
+                                    <option value="<?= $dato["id_proyecto"] ?>"><?= $dato["titulo"]; ?></option>
                                 <?php
                                 }
                                 ?>

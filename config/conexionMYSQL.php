@@ -1,5 +1,4 @@
 <?php
-
     class ConexionMYSQL{
         private $host = "localhost";
         private $usuario = "root";

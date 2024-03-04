@@ -43,19 +43,14 @@ class Registro
             VALUES (?,?,?,?,?,?,?,?,?,NOW())";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([$usuario, $clave_ecriptada, $full_name, $correo, $numero, $dni, $edad, $especialidad, $foto]);
-            if ($this->ifExistUser($usuario)) {
-                return false;
-            } else {
-                if ($stmt->rowCount() > 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+
+            return true; // Devuelve true si la inserción es exitosa
         } catch (PDOException $e) {
-            throw new Exception("Error Processing Request" . $e->getMessage());
+            // Lanza una excepción en caso de error
+            throw new Exception("Error al insertar en la base de datos: " . $e->getMessage());
         }
     }
+
     /**
      * Check if a user exists in the autentication table.
      *

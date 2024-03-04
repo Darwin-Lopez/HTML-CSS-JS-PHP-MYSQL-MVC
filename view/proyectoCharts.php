@@ -24,7 +24,7 @@ $totalProyectos = $proyecto->getProyectos();
             ]);
 
             var options = {
-                title: 'Total de proyectos <?php echo count($totalProyectos) ?>',
+                title: 'Total de proyectos <?= count($totalProyectos) ?>',
                 is3D: true,
             };
 

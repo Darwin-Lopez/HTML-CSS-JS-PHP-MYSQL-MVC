@@ -73,11 +73,6 @@ session_start();
 </style>
 
 <body>
-    <?php
-    require_once("../model/ClassRegistro.php");
-    $obj = new Registro();
-    ?>
-
     <div class="validation">
         <?php
         if (isset($_SESSION["ERROR-AUTENTICACION"])) {
@@ -93,7 +88,7 @@ session_start();
             <?php
             unset($_SESSION["ERROR-AUTENTICACION"]);
         } else {
-            if (isset($_SESSION["SUCCESS-QUERY"])) {
+            if (isset($_SESSION["SUCCESS-QUERY-CREATE"])) {
             ?>
                 <script>
                     Swal.fire({
@@ -101,12 +96,10 @@ session_start();
                         title: 'Bienvenido',
                         text: 'Su cuenta ha sido creada, por favor inicie sesión',
                         confirmButtonText: 'Ok'
-                    }).then(function() {
-                        window.location = "../view/login.php";
                     })
                 </script>
                 <?php
-                unset($_SESSION["SUCCESS-QUERY"]);
+                unset($_SESSION["SUCCESS-QUERY-CREATE"]);
             } else {
                 if (isset($_SESSION["ERROR-QUERY"])) {
                 ?>
@@ -214,7 +207,7 @@ session_start();
                     </div>
                     <hr>
                     <div class="d-flex justify-content-end gap-3">
-                        <a href="login.php" class="btn btn-danger">
+                        <a href="home.php" class="btn btn-danger">
                             <svg width="25" height="25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2a10 10 0 1 0 0 20 10 10 0 1 0 0-20z"></path>
                                 <path d="m12 8-4 4 4 4"></path>

@@ -1,6 +1,5 @@
 <?php
 session_start(); // Iniciar la sesión para mantener los datos entre solicitudes
-require_once("../config/conexionMYSQL.php"); // Incluir el archivo de configuración para la conexión a MySQL
 require_once("../model/ClassRegistro.php"); // Incluir la clase Registro para interactuar con la base de datos
 $obj = new Registro(); // Crear una nueva instancia de la clase Registro
 
@@ -42,12 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["btn-registrar"])) {
             $result = $obj->setRegistrar($usuario, $clave, $full_name, $correo, $numero, $dni, $edad, $especialidad, $ruta);
 
             // Verificar si la consulta fue exitosa
-            if (!$result) {
-                $_SESSION["ERROR-QUERY"] = "ERROR DE CONSULTA"; // Establecer una variable de sesión para indicar error de consulta
+            if ($result) {
+                $_SESSION["SUCCESS-QUERY-CREATE"] = "CONSULTA EXITOSA"; // Establecer una variable de sesión para indicar éxito de la consulta
                 header("Location: ../view/sign_up.php"); // Redireccionar de vuelta al formulario de registro
             } else {
-                $_SESSION["SUCCESS-QUERY"] = "CONSULTA EXITOSA"; // Establecer una variable de sesión para indicar éxito de la consulta
+                $_SESSION["ERROR-QUERY"] = "ERROR DE CONSULTA"; // Establecer una variable de sesión para indicar error de consulta
                 header("Location: ../view/sign_up.php"); // Redireccionar de vuelta al formulario de registro
+                
             }
         }
     }

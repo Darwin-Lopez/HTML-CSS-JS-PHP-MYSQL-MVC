@@ -11,6 +11,7 @@
     body{
         font-family: "poppins", sans-serif;
     }
+    
 </style>
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
@@ -27,23 +28,13 @@
                     <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="empleado.php">Empleados</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="proyecto.php">Proyectos</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="sign_up.php">crear cuenta</a>
-                </li>
-                <li class="nav-item">
                     <button class="nav-link" onclick="log_out()">Cerrar Sesión</button>
                 </li>
             </ul>
             <button type="button" class="btn btn-primary" disabled>
                     <?php
-                    if (isset($_SESSION["SUCCESS-QUERY-USUARIO"])) {
-                        echo $_SESSION["SUCCESS-QUERY-USUARIO"];
+                    if (isset($_GET["usuario"])) {
+                        echo $_GET["usuario"];
                     } else {
                         header("Location: login.php");
                         exit();
@@ -64,7 +55,7 @@
         dangerMode: true,
     }).then((willDelete) => {
         if (willDelete) {
-            window.location.href = `../controller/log_out.php`;
+            window.location.href = `../../controller/log_out.php`;
         }
     });
 }
